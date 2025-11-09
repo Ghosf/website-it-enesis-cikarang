@@ -1,0 +1,104 @@
+/* Kotak hijau di belakang tulisan Selamat Datang */
+.welcome-box {
+  background: #bbf7d0;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: #064e3b;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-box h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+/* Carousel */
+.carousel {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.carousel img {
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.carousel img:hover {
+  transform: scale(1.05);
+}
+
+/* Hilangin scrollbar biar lebih clean */
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.navbar-fade {
+  height: 80px; /* bisa diatur, makin tinggi makin lembut */
+  background: linear-gradient(rgba(255,255,255,0), #f9f9f9);
+}
+
+#docs {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #f7fdf7;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+#docs h2 {
+  font-size: 2em;
+  margin-bottom: 40px;
+  color: #2a6e3f;
+}
+
+#docs .inventaris-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+#docs .inventaris-box {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 280px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#docs .inventaris-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+#docs .inventaris-box img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+#docs .inventaris-box h3 {
+  margin: 15px 0 5px;
+  color: #2a6e3f;
+}
+
+#docs .inventaris-box p {
+  padding: 0 15px 20px;
+  font-size: 0.95em;
+  color: #444;
+}
+
+/* samain ukuran gambar di dokumentasi */
+#docs .inventaris-box img {
+  width: 100%;
+  height: 200px; /* tinggi ideal, bisa diganti 220px kalau mau lebih besar */
+  object-fit: cover;
+  border-bottom: 3px solid #16a34a; /* biar keliatan rapih & tematik */
+}

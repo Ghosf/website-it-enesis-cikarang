@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Departemen IT - PT Enesis</title>
+    <style>
+
+            /* samain ukuran gambar di dokumentasi */
+      #docs .inventaris-box img {
+        width: 100%;
+        height: 500px; 
+        object-fit: cover;
+        border-bottom: 3px solid #16a34a; 
+      }   
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #9fc3aa;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        position: relative;
+        color: white;
+        background-image: url("../enesis/asset/galeri/photo/fotodepan.jpg");
+        background-size: cover;
+        background-position: center 66%;
+        padding: 2rem 1rem;
+        overflow: hidden;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 0;
+      }
+
+      header div,
+      header nav {
+        position: relative;
+        z-index: 1;
+      }
+
+      header h1 {
+        margin: 0;
+      }
+
+      header div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      header img {
+        height: 160px;
+        object-fit: contain;
+      }
+
+      nav {
+        text-align: center;
+        margin-top: 15px;
+      }
+
+      nav button {
+        margin: 0 8px;
+        padding: 12px 22px;
+        border: none;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.75);
+        color: #14532d;
+        font-weight: bold;
+        font-size: 18px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      nav button:hover {
+        background: rgba(255, 255, 255, 0.9);
+        transform: scale(1.05);
+      }
+
+      nav button.active {
+        background: #16a34a;
+        color: white;
+      }
+
+      section {
+        background: white;
+        padding: 1.5rem;
+        margin: 1rem auto;
+        max-width: 900px;
+        border-radius: 8px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+        display: none;
+      }
+
+      section:first-of-type {
+        display: block;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: #14532d;
+      }
+
+      .welcome-box {
+        display: inline-block;
+        background: #16a34a;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+
+      ul {
+        margin-left: 20px;
+      }
+
+      .layanan li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background: #ecfdf5;
+        border-left: 5px solid #22c55e;
+        border-radius: 6px;
+        transition: 0.3s;
+      }
+
+      .layanan li:hover {
+        background: #d1fae5;
+        transform: translateX(4px);
+      }
+
+      .org-diagram {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .org-diagram .level-1 {
+        background: #16a34a;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: inline-block;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      .org-diagram .line {
+        width: 2px;
+        height: 40px;
+        background: #16a34a;
+        margin: 0 auto;
+      }
+
+      .org-diagram .level-2 {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .org-diagram .level-2 div {
+        background: #dcfce7;
+        padding: 10px 15px;
+        border-radius: 8px;
+        border: 2px solid #16a34a;
+        font-weight: bold;
+        color: #14532d;
+        min-width: 140px;
+        transition: 0.3s;
+      }
+
+      .org-diagram .level-2 div:hover {
+        background: #bbf7d0;
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .org-list li {
+        margin-bottom: 12px;
+        padding: 14px;
+        background: #f0fdf4;
+        border-left: 5px solid #16a34a;
+        border-radius: 6px;
+        transition: 0.3s;
+      }
+
+      .org-list li:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        background: #dcfce7;
+      }
+
+      .org-list strong {
+        color: #14532d;
+      }
+
+      /* INVENTARIS */
+      .inventaris-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+      }
+
+      .inventaris-box {
+        flex: 1 1 420px;
+        background: #f0fdf4;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .inventaris-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .inventaris-box h3 {
+        color: #14532d;
+        border-bottom: 2px solid #22c55e;
+        padding-bottom: 8px;
+        margin-bottom: 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+
+      th,
+      td {
+        border: 1px solid #bbf7d0;
+        padding: 8px 10px;
+        text-align: left;
+      }
+
+      th {
+        background: #16a34a;
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dcfce7;
+      }
+
+      .layanan-list li {
+        margin-bottom: 8px;
+        padding: 10px;
+        background: #ecfdf5;
+        border-left: 5px solid #22c55e;
+        border-radius: 6px;
+      }
+
+      footer {
+        background: #22c55e;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      /* Carousel */
+      .carousel {
+        position: relative;
+        width: 100%;
+        max-width: 700px;
+        margin: 20px auto;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .carousel-container {
+        display: flex;
+        transition: transform 0.6s ease;
+      }
+
+      .carousel-container img {
+        width: 100%;
+        flex-shrink: 0;
+        border-radius: 10px;
+      }
+
+      .carousel button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.4);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+        font-size: 18px;
+        transition: background 0.3s;
+      }
+
+      .carousel button:hover {
+        background: rgba(0, 0, 0, 0.7);
+      }
+
+      .carousel .prev {
+        left: 10px;
+      }
+
+      .carousel .next {
+        right: 10px;
+      }
+
+      
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="navbar-fade">
+        <h1>Departemen IT - PT Enesis</h1>
+        <img
+          src="../enesis/asset/galeri/photo/enesislogo.png"
+          alt="Logo Enesis"
+        />
+      </div>
+
+      <nav>
+        <button class="active" onclick="showPage('home')">Beranda</button>
+        <button onclick="showPage('org')">Struktur Organisasi</button>
+        <button onclick="showPage('inv')">Inventaris & Layanan</button>
+        <button onclick="showPage('docs')">Dokumentasi</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- BERANDA -->
+      <section id="home">
+        <h2 class="welcome-box">Selamat Datang!</h2>
+        <p>
+          Situs ini berisi data struktur organisasi, inventaris & layanan IT,
+          serta dokumentasi prosedur kerja sebagai acuan dalam menentukan peran
+          pengguna dan hak akses pada sistem.
+        </p>
+
+        <h3>1. Deskripsi Departemen IT</h3>
+        <p>
+          Departemen IT PT Enesis bertanggung jawab dalam pengelolaan
+          infrastruktur teknologi, pengembangan aplikasi internal, serta
+          memastikan sistem berjalan dengan aman dan efisien untuk mendukung
+          seluruh kegiatan operasional perusahaan.
+        </p>
+
+        <h3>2. Visi & Misi</h3>
+        <p>
+          <strong>Visi:</strong> Menjadi departemen IT yang inovatif dan andal
+          dalam mendukung transformasi digital di PT Enesis.
+        </p>
+        <p><strong>Misi:</strong></p>
+        <ul>
+          <li>Menyediakan layanan teknologi yang cepat dan efektif.</li>
+          <li>Menjaga keamanan data dan sistem perusahaan.</li>
+          <li>
+            Mendukung kolaborasi lintas departemen melalui solusi digital.
+          </li>
+        </ul>
+
+        <h3>3. Layanan Utama</h3>
+        <ul class="layanan">
+          <li>
+            <strong>🖥️ Manajemen Jaringan dan Server</strong> — Bertanggung
+            jawab atas pengelolaan jaringan internal, server, dan sistem
+            komunikasi agar seluruh perangkat perusahaan tetap terhubung stabil.
+          </li>
+          <li>
+            <strong>🛠️ Helpdesk dan Dukungan Teknis</strong> — Memberikan
+            bantuan teknis kepada karyawan, mulai dari perbaikan perangkat,
+            troubleshooting software, hingga panduan penggunaan sistem.
+          </li>
+          <li>
+            <strong>💻 Pengembangan Aplikasi Internal</strong> — Mengembangkan
+            dan memelihara aplikasi berbasis web maupun desktop untuk mendukung
+            efisiensi dan produktivitas seluruh departemen.
+          </li>
+          <li>
+            <strong>🔒 Keamanan dan Backup Data</strong> — Menjaga keamanan data
+            perusahaan dengan sistem enkripsi, firewall, serta melakukan backup
+            rutin untuk mencegah kehilangan data penting.
+          </li>
+        </ul>
+
+        <h3>4. Galeri Departemen</h3>
+        <div class="carousel">
+          <div class="carousel-container">
+            <img src="../enesis/asset/galeri/photo/pasien.jpg" alt="Tim IT" />
+            <img src="../enesis/asset/galeri/photo/21.jpg" alt="Server Room" />
+            <img src="../enesis/asset/galeri/photo/abtu.jpg" alt="Meeting IT" />
+          </div>
+          <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+          <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+      </section>
+
+      <!-- STRUKTUR ORGANISASI -->
+      <section id="org">
+        <h2>Struktur Organisasi Departemen IT</h2>
+
+        <div class="org-diagram">
+          <div class="level-1">Dept. Head</div>
+          <div class="line"></div>
+          <div class="level-2">
+            <div>Helpdesk Support</div>
+            <div>Security & System Admin</div>
+            <div>Network & Infrastructure</div>
+            <div>Admin</div>
+          </div>
+        </div>
+
+        <ul class="org-list">
+          <li>
+            <strong>Dept. Head</strong> — Memimpin dan mengawasi seluruh
+            aktivitas sub-departemen, mengkoordinasikan pekerjaan antar bagian,
+            menyusun rencana kerja, target, dan evaluasi kinerja tim, serta
+            melaporkan perkembangan kerja ke manajemen lebih tinggi.
+          </li>
+          <li>
+            <strong>Helpdesk Support</strong> — Menerima dan menangani keluhan
+            user terkait IT, memberi solusi awal, dan dokumentasi tiket
+            permasalahan.
+          </li>
+          <li>
+            <strong>Security dan System Admin</strong> — Mengelola keamanan
+            sistem, mengatur akses user, monitoring server, serta backup dan
+            update sistem.
+          </li>
+          <li>
+            <strong>Network & Infrastructure</strong> — Merancang dan memelihara
+            infrastruktur jaringan, troubleshooting, dan pengelolaan perangkat
+            jaringan.
+          </li>
+          <li>
+            <strong>Admin</strong> — Mengurus administrasi, mencatat data
+            operasional, menjadi penghubung, serta mengatur inventaris IT.
+          </li>
+        </ul>
+      </section>
+
+      <!-- INVENTARIS & LAYANAN -->
+      <section id="inv">
+        <h2>Inventaris & Layanan IT</h2>
+        <div class="inventaris-container">
+          <div class="inventaris-box">
+            <h3>📦 Data Inventaris IT</h3>
+            <table>
+              <tr>
+                <th>Nama Perangkat</th>
+                <th>Jumlah</th>
+                <th>Keterangan</th>
+              </tr>
+              <tr>
+                <td>PC Box</td>
+                <td>47 Unit</td>
+                <td>Digunakan oleh sebagian karyawan di kantor pusat</td>
+              </tr>
+              <tr>
+                <td>PC All in one</td>
+                <td>42 Unit</td>
+                <td>Digunakan oleh sebagian karyawan di kantor pusat</td>
+              </tr>
+              <tr>
+                <td>Laptop</td>
+                <td>25 Unit</td>
+                <td>Untuk staf mobile, cadangan, & meeting eksternal</td>
+              </tr>
+              <tr>
+                <td>Printer & Scanner</td>
+                <td>16 Unit</td>
+                <td>Ditempatkan di tiap divisi utama</td>
+              </tr>
+              <tr>
+                <td>Server</td>
+                <td>5 Unit</td>
+                <td>Server utama, backup, dan pengujian sistem</td>
+              </tr>
+              <tr>
+                <td>Router & Switch</td>
+                <td>30 Unit</td>
+                <td>Mendukung infrastruktur jaringan perusahaan</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="inventaris-box">
+            <h3>💡 Layanan IT</h3>
+            <ul class="layanan-list">
+              <li>
+                <b>Helpdesk Support</b> — Menangani kendala software, hardware,
+                atau jaringan bagi karyawan.
+              </li>
+              <li>
+                <b>Maintenance Berkala</b> — Pemeriksaan dan perawatan rutin
+                perangkat komputer & jaringan.
+              </li>
+              <li>
+                <b>Manajemen Akses</b> — Pembuatan dan pengelolaan akun user
+                untuk sistem internal.
+              </li>
+              <li>
+                <b>Backup Data</b> — Penjadwalan backup otomatis untuk keamanan
+                data perusahaan.
+              </li>
+              <li>
+                <b>Pengembangan Sistem</b> — Pembuatan aplikasi dan sistem
+                informasi internal.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- DOKUMENTASI -->
+      <section id="docs">
+        <h2>Dokumentasi Prosedur Kerja IT</h2>
+
+        <div class="inventaris-container">
+          <div class="inventaris-box">
+            <img
+              src="../enesis/asset/galeri/photo/servis.jpg"
+              alt="Penanganan Keluhan IT"
+            />
+            <h3>📋 Penanganan Keluhan IT</h3>
+            <p>
+              Proses penanganan laporan masalah IT oleh user, mulai dari
+              pencatatan tiket hingga penyelesaian dan dokumentasi hasil kerja.
+            </p>
+          </div>
+
+          <div class="inventaris-box">
+            <img
+              src="../enesis/asset/galeri/photo/server.jpeg"
+              alt="Pemeliharaan Sistem & Jaringan"
+            />
+            <h3>🧰 Pemeliharaan Sistem & Jaringan</h3>
+            <p>
+              Pemeliharaan rutin jaringan dan sistem untuk memastikan kinerja
+              optimal serta keamanan seluruh infrastruktur IT.
+            </p>
+          </div>
+
+          <div class="inventaris-box">
+            <img
+              src="../enesis/asset/galeri/photo/catat.webp"
+              alt="Pengadaan & Pencatatan Perangkat"
+            />
+            <h3>🖨️ Pengadaan & Pencatatan Perangkat</h3>
+            <p>
+              Pendataan dan pengadaan perangkat komputer serta pencatatan
+              inventaris agar penggunaan sumber daya terkelola dengan baik.
+            </p>
+          </div>
+
+          <div class="inventaris-box">
+            <img
+              src="../enesis/asset/galeri/photo/inulpc.jpeg"
+              alt="Backup & Recovery Data"
+            />
+            <h3>💾 Backup & Recovery Data</h3>
+            <p>
+              Proses backup rutin dan pemulihan data untuk menjamin keamanan
+              serta keberlangsungan sistem dalam kondisi darurat.
+            </p>
+          </div>
+
+          <div class="inventaris-box">
+            <img
+              src="../enesis/asset/galeri/photo/cctv.png"
+              alt="Pemasangan & Pemeliharaan CCTV"
+            />
+            <h3>🎥 Pemasangan & Pemeliharaan CCTV</h3>
+            <p>
+              Pemasangan, konfigurasi, dan pengecekan rutin sistem CCTV untuk
+              mendukung keamanan lingkungan kerja dan pengawasan fasilitas.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© PT Enesis — Departemen IT</p>
+    </footer>
+
+    <script>
+      function showPage(page) {
+        document
+          .querySelectorAll("section")
+          .forEach((sec) => (sec.style.display = "none"));
+        document.getElementById(page).style.display = "block";
+        document
+          .querySelectorAll("nav button")
+          .forEach((btn) => btn.classList.remove("active"));
+        event.target.classList.add("active");
+      }
+
+      let slideIndex = 0;
+      function moveSlide(n) {
+        const container = document.querySelector(".carousel-container");
+        const slides = document.querySelectorAll(".carousel-container img");
+        slideIndex = (slideIndex + n + slides.length) % slides.length;
+        container.style.transform = `translateX(-${slideIndex * 100}%)`;
+      }
+    </script>
+  </body>
+</html>
